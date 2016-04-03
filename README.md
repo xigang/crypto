@@ -1,4 +1,4 @@
-# goencryption
+# goencrypt
 On MD5, BASE64, SHA1, SHA256, RSA, DES, AES algorithm package. To facilitate the use of encryption and decryption.
 
 #### How to use?
