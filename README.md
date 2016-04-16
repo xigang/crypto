@@ -1,7 +1,6 @@
-# goencrypt
-On MD5, BASE64, SHA1, SHA256, RSA, DES, AES algorithm package. To facilitate the use of encryption and decryption.
+Go Package for dealing with MD5, BASE64, SHA1, SHA256, RSA, DES, AES encryption and decryption.
 
-#### How to use?
+### How to use?
 
 ```
 //Using RSA for encryption and decryption
