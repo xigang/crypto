@@ -1,4 +1,4 @@
-Go Package for dealing with MD5, BASE64, SHA1, SHA256, RSA, DES, AES encryption and decryption.
+Go supplementary cryptography libaraies.
 
 ### How to use?
 
