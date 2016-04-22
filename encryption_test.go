@@ -1,5 +1,6 @@
-package goencryption
+package crypto
 
+/*
 import (
 	"crypto/rand"
 	"io"
@@ -119,3 +120,4 @@ func Test3Des(t *testing.T) {
 	}
 	t.Log(string(origData))
 }
+*/

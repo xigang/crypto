@@ -1,5 +1,6 @@
-package goencryption
+package crypto
 
+/*
 import (
 	"bytes"
 	"crypto"
@@ -283,3 +284,4 @@ func Sign(priv *rsa.PrivateKey, hash crypto.Hash, data []byte) (signed []byte, e
 func Unsign(pub *rsa.PublicKey, hash crypto.Hash, hashed, sign []byte) error {
 	return rsa.VerifyPKCS1v15(pub, hash, hashed, sign)
 }
+*/
