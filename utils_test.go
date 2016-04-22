@@ -15,12 +15,12 @@ const (
 	RSA_PUBLIC_KEY_PATH  = "./rsa_public_key.pem"
 )
 
-// func TestGenRsaKey(t *testing.T) {
-// 	err := GenRsaKey(BITS)
-// 	if err != nil {
-// 		t.Error("generate pub and priv key error.", err)
-// 	}
-// }
+func TestGenRsaKey(t *testing.T) {
+	err := GenRsaKey(BITS)
+	if err != nil {
+		t.Error("generate pub and priv key error.", err)
+	}
+}
 
 // === RUN TestGetFileContent
 // --- PASS: TestGetFileContent (0.00s)
@@ -54,14 +54,14 @@ const (
 
 // PASS
 // ok  	github.com/xigang/crypto	0.006s
-// func TestGetFileContent(t *testing.T) {
-// 	data, err := GetFileContent(RSA_PRIVATE_KEY_PATH)
-// 	if err != nil {
-// 		t.Error("failed to load file.", err)
-// 	}
+func TestGetFileContent(t *testing.T) {
+	data, err := GetFileContent(RSA_PRIVATE_KEY_PATH)
+	if err != nil {
+		t.Error("failed to load file.", err)
+	}
 
-// 	t.Log("success to load file: ", string(data))
-// }
+	t.Log("success to load file: ", string(data))
+}
 
 func TestGetPrividateKey(t *testing.T) {
 	data, err := GetFileContent(RSA_PRIVATE_KEY_PATH)

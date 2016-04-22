@@ -1,6 +1,7 @@
 package crypto
 
 import (
+	"bytes"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/x509"
@@ -38,7 +39,7 @@ func GenRsaKey(bits int) error {
 		Type:  "RSA PRIVATE KEY",
 		Bytes: derStream,
 	}
-	file, err := os.Create("rsa_private_key1.pem")
+	file, err := os.Create("rsa_private_key.pem")
 	if err != nil {
 		return err
 	}
@@ -97,4 +98,28 @@ func GetPublicKey(certData []byte) (pub *rsa.PublicKey, err error) {
 	}
 	pub = pubInterface.(*rsa.PublicKey)
 	return
+}
+
+func ZeroPadding(ciphertext []byte, blockSize int) []byte {
+	padding := blockSize - len(ciphertext)%blockSize
+	padtext := bytes.Repeat([]byte{0}, padding)
+	return append(ciphertext, padtext...)
+}
+
+func ZeroUnPadding(origData []byte) []byte {
+	return bytes.TrimRightFunc(origData, func(r rune) bool {
+		return r == rune(0)
+	})
+}
+
+func PKCS5Padding(ciphertext []byte, blockSize int) []byte {
+	padding := blockSize - len(ciphertext)%blockSize
+	padtext := bytes.Repeat([]byte{byte(padding)}, padding)
+	return append(ciphertext, padtext...)
+}
+
+func PKCS5UnPadding(origData []byte) []byte {
+	length := len(origData)
+	unpadding := int(origData[length-1])
+	return origData[:(length - unpadding)]
 }
