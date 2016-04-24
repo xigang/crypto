@@ -7,6 +7,7 @@ import (
 	"github.com/xigang/crypto"
 )
 
+// AesEncrypt return AES encryption of data.
 func AesEncrypt(origData, key []byte) ([]byte, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
@@ -20,6 +21,7 @@ func AesEncrypt(origData, key []byte) ([]byte, error) {
 	return crypted, nil
 }
 
+//AesDecrypt return AES decrypt of data.
 func AesDecrypt(crypted, key []byte) ([]byte, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
