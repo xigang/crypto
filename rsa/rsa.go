@@ -8,7 +8,7 @@ import (
 	"errors"
 )
 
-//rsa
+//RsaEncrypt return RSA encryption of data
 func RsaEncrypt(publicKey []byte, origData []byte) ([]byte, error) {
 	block, _ := pem.Decode(publicKey)
 	if block == nil {
@@ -23,7 +23,7 @@ func RsaEncrypt(publicKey []byte, origData []byte) ([]byte, error) {
 	return rsa.EncryptPKCS1v15(rand.Reader, pub, origData)
 }
 
-//rsa
+//RsaDecrypt return RSA decryption of data.
 func RsaDecrypt(privateKey []byte, ciphertest []byte) ([]byte, error) {
 	block, _ := pem.Decode(privateKey)
 	if block == nil {
@@ -37,12 +37,12 @@ func RsaDecrypt(privateKey []byte, ciphertest []byte) ([]byte, error) {
 	return rsa.DecryptPKCS1v15(rand.Reader, priv, ciphertest)
 }
 
-//sign
+//Sign
 func Sign(priv *rsa.PrivateKey, hash crypto.Hash, data []byte) (signed []byte, err error) {
 	return rsa.SignPKCS1v15(rand.Reader, priv, hash, data)
 }
 
-//unsign
+//Unsign
 func Unsign(pub *rsa.PublicKey, hash crypto.Hash, hashed, sign []byte) error {
 	return rsa.VerifyPKCS1v15(pub, hash, hashed, sign)
 }
