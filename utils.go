@@ -11,7 +11,7 @@ import (
 	"os"
 )
 
-//读取文件内容
+//GetFileContent return file content from filepath
 func GetFileContent(certFile string) (data []byte, err error) {
 	f, err := os.Open(certFile)
 	if err != nil {
@@ -26,9 +26,9 @@ func GetFileContent(certFile string) (data []byte, err error) {
 	return
 }
 
-//生成私钥，公钥文件
+//GenRsaKey return generate public and public key file
 func GenRsaKey(bits int) error {
-	//生成私钥文件
+	//generate private key
 	privateKey, err := rsa.GenerateKey(rand.Reader, bits)
 	if err != nil {
 		return err
@@ -48,7 +48,7 @@ func GenRsaKey(bits int) error {
 		return err
 	}
 
-	//生成公钥文件
+	//generate pubic key
 	publicKey := &privateKey.PublicKey
 	derPkix, err := x509.MarshalPKIXPublicKey(publicKey)
 	if err != nil {
@@ -69,7 +69,7 @@ func GenRsaKey(bits int) error {
 	return nil
 }
 
-//获取私钥
+//GetPrivateKey return private key
 func GetPrivateKey(keyData []byte) (priv *rsa.PrivateKey, err error) {
 	block, _ := pem.Decode(keyData)
 	if block == nil {
@@ -84,7 +84,7 @@ func GetPrivateKey(keyData []byte) (priv *rsa.PrivateKey, err error) {
 	return
 }
 
-//获取公钥
+//GetPublicKey return public key
 func GetPublicKey(certData []byte) (pub *rsa.PublicKey, err error) {
 	block, _ := pem.Decode(certData)
 	if block == nil {

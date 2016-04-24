@@ -7,7 +7,7 @@ import (
 	"github.com/xigang/crypto"
 )
 
-//des加密
+//des
 func DesEncrypt(origData []byte, key []byte) ([]byte, error) {
 	block, err := des.NewCipher(key)
 	if err != nil {
@@ -21,7 +21,7 @@ func DesEncrypt(origData []byte, key []byte) ([]byte, error) {
 	return crypted, nil
 }
 
-//des解密
+//des
 func DesDecrypt(crypted []byte, key []byte) ([]byte, error) {
 	block, err := des.NewCipher(key)
 	if err != nil {
@@ -35,7 +35,7 @@ func DesDecrypt(crypted []byte, key []byte) ([]byte, error) {
 	return origData, nil
 }
 
-//3des加密
+//3des
 func TripleDesEncrypt(origData, key []byte) ([]byte, error) {
 	block, err := des.NewTripleDESCipher(key)
 	if err != nil {
@@ -48,7 +48,7 @@ func TripleDesEncrypt(origData, key []byte) ([]byte, error) {
 	return crypted, nil
 }
 
-//3des解密
+//3des
 func TripleDesDecrypt(crypted, key []byte) ([]byte, error) {
 	block, err := des.NewTripleDESCipher(key)
 	if err != nil {
