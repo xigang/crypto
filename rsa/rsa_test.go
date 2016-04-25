@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	RSA_PRIVATE_KEY_PATH = "../rsa_private_key.pem"
-	RSA_PUBLIC_KEY_PATH  = "../rsa_public_key.pem"
+	RsaPrivateKeyPath = "../rsa_private_key.pem"
+	RsaPublicKeyPath  = "../rsa_public_key.pem"
 )
 
 //output:
@@ -22,7 +22,7 @@ const (
 func TestRsa(t *testing.T) {
 	str := "wangxigang2014@gmail.com"
 
-	publicKey, err := crypto.GetFileContent(RSA_PUBLIC_KEY_PATH)
+	publicKey, err := crypto.GetFileContent(RsaPublicKeyPath)
 	if err != nil {
 		t.Error("read public key error: ", err)
 	}
@@ -33,7 +33,7 @@ func TestRsa(t *testing.T) {
 	}
 	t.Log(string(ciphertest))
 
-	privateKey, err := crypto.GetFileContent(RSA_PRIVATE_KEY_PATH)
+	privateKey, err := crypto.GetFileContent(RsaPrivateKeyPath)
 	if err != nil {
 		t.Error("read private key error: ", err)
 	}

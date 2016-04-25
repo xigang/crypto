@@ -4,6 +4,7 @@ import (
 	"crypto/md5"
 )
 
+//Md5 return MD5 encrypted data
 func MD5(data []byte) []byte {
 	h := md5.New()
 	h.Write(data)
