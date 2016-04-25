@@ -37,10 +37,12 @@ func RsaDecrypt(privateKey []byte, ciphertest []byte) ([]byte, error) {
 	return rsa.DecryptPKCS1v15(rand.Reader, priv, ciphertest)
 }
 
+//Sign return signature of data
 func Sign(priv *rsa.PrivateKey, hash crypto.Hash, data []byte) (signed []byte, err error) {
 	return rsa.SignPKCS1v15(rand.Reader, priv, hash, data)
 }
 
+//Unsign return data for the solution
 func Unsign(pub *rsa.PublicKey, hash crypto.Hash, hashed, sign []byte) error {
 	return rsa.VerifyPKCS1v15(pub, hash, hashed, sign)
 }
