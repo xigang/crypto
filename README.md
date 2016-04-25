@@ -17,7 +17,7 @@ go get github.com/xigang/crypto
 Usage
 ------
 
-##### Aes
+##### AES
 
 ```go
     func TestAes(t *testing.T) {
@@ -150,12 +150,11 @@ Usage
         data := Sha1([]byte(str))
         t.Log("sha1 data: ", string(data))
     }
-    ```
+```
 
+##### SHA256
 
-    ##### SHA256
-
-    ```go
+```go
     func TestSha256(t *testing.T) {
         str := "wangxigang2014@gmail.com"
         data := Sha256([]byte(str))
