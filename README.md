@@ -3,8 +3,6 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/xigang/crypto)](https://goreportcard.com/report/github.com/xigang/crypto)
 [![GoDoc](https://godoc.org/github.com/xigang/crypto?status.svg)](https://godoc.org/github.com/xigang/crypto)
 
-[![Coverage Status](https://coveralls.io/repos/github/go-playground/log/badge.svg?branch=master)](https://coveralls.io/github/go-playground/log?branch=master)
-
 Go supplementary cryptography libaraies.
 
 Installation
