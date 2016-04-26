@@ -14,3 +14,9 @@ Use go get
 ```go
 go get github.com/xigang/crypto
 ``` 
+
+
+Usage
+------------
+
+See unit test under each file.
