@@ -4,34 +4,47 @@ import (
 	"crypto/rand"
 	"io"
 	"testing"
-
-	"github.com/xigang/crypto/base64"
 )
 
-//output:
-//=== RUN TestAes
-// --- PASS: TestAes (0.00s)
-// 	aes_test.go:23: jKPu0zi5EsU1NK5m+6ieosJQUj465gHmtMS52BdUYTY=
-// 	aes_test.go:29: wangxgang201@gmail.com
-// PASS
-// ok  	github.com/xigang/crypto/aes	0.010s
-func TestAes(t *testing.T) {
-	str := "wangxgang201@gmail.com"
+func TestAES(t *testing.T) {
+	var tests = []struct {
+		param string
+	}{
+		{"wangxigang2014@gmail.com"},
+		{"1234567890"},
+		{"GolangChina"},
+		{"\n\b\t"},
+	}
 
 	key := make([]byte, 16)
 	if _, err := io.ReadFull(rand.Reader, key); err != nil {
 		return
 	}
 
-	result, err := AesEncrypt([]byte(str), key)
-	if err != nil {
-		t.Error("aes encrypt data error.", err)
-	}
-	t.Log(base64.Base64Encode(result))
+	for _, test := range tests {
+		result, err := AesEncrypt([]byte(test.param), key)
+		if err != nil {
+			t.Error("AES encrypt data error.", err)
+		}
 
-	origData, err := AesDecrypt(result, key)
-	if err != nil {
-		t.Error("aes decrypt data error.")
+		origData, err := AesDecrypt(result, key)
+		if err != nil {
+			t.Error("AES decrypt data error.")
+		}
+
+		if string(origData) == test.param {
+			t.Logf("encryption and decryption success, and origin data is: %v", string(origData))
+		}
 	}
-	t.Log(string(origData))
 }
+
+//output:
+// === RUN TestAES
+// --- PASS: TestAES (0.00s)
+// 	aes_test.go:36: encryption and decryption success, and origin data is: wangxigang2014@gmail.com
+// 	aes_test.go:36: encryption and decryption success, and origin data is: 1234567890
+// 	aes_test.go:36: encryption and decryption success, and origin data is: GolangChina
+// 	aes_test.go:36: encryption and decryption success, and origin data is:
+
+// PASS
+// ok  	github.com/xigang/crypto/aes	0.007s
