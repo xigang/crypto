@@ -1,6 +1,7 @@
 package crypto
 
 import (
+	"crypto/des"
 	"testing"
 )
 
@@ -54,4 +55,49 @@ func TestGetPublicKey(t *testing.T) {
 	}
 
 	t.Log("public key:", *pubicKey)
+}
+
+func TestZeroPadding(t *testing.T) {
+	var tests = []struct {
+		data string
+		key  string
+	}{
+		{"wangxigang2014@gmail.com", "sfe023f_"},
+	}
+
+	for _, test := range tests {
+		t.Log("start data length", len(string(test.data)))
+		block, err := des.NewCipher([]byte(test.key))
+		if err != nil {
+			t.Error(err)
+		}
+		origData := ZeroPadding([]byte(test.data), block.BlockSize())
+		t.Logf("padding data:%v and length:%v", string(origData), len(string(origData)))
+
+		data := ZeroUnPadding(origData)
+		t.Logf("data is:%v and data length:%v", string(data), len(string(data)))
+	}
+}
+
+func TestPKCS5Padding(t *testing.T) {
+	var tests = []struct {
+		data string
+		key  string
+	}{
+		{"wangxigang2014@gmail.com", "sfe023f_"},
+	}
+
+	for _, test := range tests {
+		t.Log("start data length", len(string(test.data)))
+		block, err := des.NewCipher([]byte(test.key))
+		if err != nil {
+			t.Error(err)
+		}
+		origData := PKCS5Padding([]byte(test.data), block.BlockSize())
+		t.Logf("padding data:%v and length:%v", string(origData), len(string(origData)))
+
+		data := PKCS5UnPadding(origData)
+		t.Logf("data is:%v and data length:%v", string(data), len(string(data)))
+
+	}
 }
