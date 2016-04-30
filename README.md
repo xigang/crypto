@@ -20,3 +20,6 @@ Usage
 ------------
 
 See unit test under each file.
+
+## License
+[Apache License](https://github.com/xigang/crypto/blob/master/LICENSE)
