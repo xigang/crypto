@@ -19,7 +19,7 @@ go get github.com/xigang/crypto
 Usage
 ------------
 
-look tests.
+look test.
 
 ## License
 [Apache License](https://github.com/xigang/crypto/blob/master/LICENSE)
