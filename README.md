@@ -22,4 +22,4 @@ Usage
 look test.
 
 ## License
-[Apache License](https://github.com/xigang/crypto/blob/master/LICENSE)
+[MIT](https://github.com/xigang/crypto/blob/master/LICENSE)
