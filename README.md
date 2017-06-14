@@ -9,17 +9,12 @@ Go supplementary cryptography libaraies.
 Installation
 -----------
 
-Use go get 
+Install
 
 ```go
 go get github.com/xigang/crypto
 ``` 
 
-
-Usage
-------------
-
-look test.
 
 ## License
 [MIT](https://github.com/xigang/crypto/blob/master/LICENSE)
