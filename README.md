@@ -9,8 +9,6 @@ Go supplementary cryptography libaraies.
 Installation
 -----------
 
-Install
-
 ```go
 go get github.com/xigang/crypto
 ``` 
