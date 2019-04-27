@@ -5,7 +5,7 @@ import (
 	"encoding/hex"
 )
 
-//MD5 return MD5 encrypted data
+//MD5 return MD5 hash data
 func MD5(s string) string {
 	h := md5.New()
 	h.Write([]byte(s))
